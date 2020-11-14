@@ -1,7 +1,6 @@
 import random
 import sys
 import sqlite3
-from sqlite3.dbapi2 import Cursor
 
 
 class Login(object):
@@ -41,7 +40,7 @@ class Login(object):
 
     def choices(self):
         conn = sqlite3.connect('card.s3db')
-        cur: Cursor = conn.cursor()
+        cur = conn.cursor()
         cur.execute('CREATE TABLE IF NOT EXISTS card(id INTEGER, number TEXT, pin TEXT, balance INTEGER DEFAULT 0);')
         conn.commit()
         choice = int(input())
